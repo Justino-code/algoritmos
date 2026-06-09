@@ -22,6 +22,8 @@ void getAll(struct list *l);
 int get(int index, struct list *l);
 
 int delete(int index, struct list *l);
+int deleteFirst(struct list *l);
+int deleteLast(struct list *l);
 
 int reverse(struct list *l);
 
@@ -66,7 +68,7 @@ int main(){
   getAll(l);
 }
 
-int insert(int value,struct list *l){
+int insert(int value, struct list *l){
   struct node *n = malloc(sizeof(struct node));
 
   if(n == NULL){
@@ -221,4 +223,26 @@ int reverse(struct list *l){
   l->end = old_start;
 
   return 0;
+}
+
+int deleteFirst(struct list *l){
+  if(l == NULL || l->size == 0 || l->start == NULL) return -1;
+
+  if (l->size == 1){
+    free(l->start);
+    l->start = NULL;
+    l->end = NULL;
+    l->size = 0;
+    return 1;
+  }
+
+  struct node *start = l->start->next;
+
+  free(l->start);
+  l->size--;
+
+  l->start = start;
+
+  return 1;
+
 }
