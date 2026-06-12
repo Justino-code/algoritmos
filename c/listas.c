@@ -246,3 +246,38 @@ int deleteFirst(struct list *l){
   return 1;
 
 }
+
+int deleteLast(struct list *l){
+  if(l == NULL || l->size == 0 || l->start == NULL)
+    return -1;
+
+  if(l->size == 1){
+    free(l->start);
+    l->start = NULL;
+    l->end = NULL;
+    l->size = 0;
+
+    return 1;
+  }
+
+  struct node *new_end = NULL;
+  struct node *curr = l->start;
+
+  while(curr != NULL){
+    if(curr->next == NULL){
+      new_end->next = NULL;
+      l->end = new_end;
+
+      free(curr);
+
+      l->size--;
+
+      return 1;
+    }
+
+    new_end = curr;
+    curr = curr->next;
+  }
+
+  return -1;
+}
