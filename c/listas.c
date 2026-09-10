@@ -71,7 +71,7 @@ int main(){
 int insert(int value, struct list *l){
   struct node *n = malloc(sizeof(struct node));
 
-  if(n == NULL){
+  if(l == NULL || n == NULL){
     return 1;
   }
   
