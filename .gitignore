@@ -1,0 +1,71 @@
+# ==========================================
+# C / C++ (Binários, Objetos e Compilação)
+# ==========================================
+# Arquivos de objeto e bibliotecas compiladas
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+
+# Executáveis (descomente ou ajuste a extensão se necessário)
+*.exe
+*.out
+*.app
+
+# Pastas de build comuns
+build/
+bin/
+dist/
+cmake-build-*/
+Makefile.old
+
+# ==========================================
+# Python (Bytecode, Cache e Ambientes)
+# ==========================================
+# Cache e bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes Virtuais
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Distribuição e empacotamento
+*.egg-info/
+.eggs/
+*.egg
+
+# C-extensions do Python (se usar Cython / CFFI)
+*.c.c
+*.so
+
+# ==========================================
+# IDEs e Ferramentas de Desenvolvimento
+# ==========================================
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# CLion / PyCharm (JetBrains)
+.idea/
+
+# Outros
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Configurações e Logs
+*.log
+.env
