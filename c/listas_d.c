@@ -146,8 +146,15 @@ int remove(int index, struct list *l){
   int count = 0;
 
   if(index == 0){
-    l->start = curr->next;
-    free(curr->next->before);
+    if(l->size == 1){
+      l->start = NULL;
+      l->end = NULL;
+    }else{
+      l->start = curr->next;
+      l->start->before = NULL;
+    }
+
+    free(curr);
 
     l->size--;
     return 1;
@@ -155,8 +162,15 @@ int remove(int index, struct list *l){
 
   if(index == (l->size - 1)){
     struct node *end = l->end;
-    end->next = NULL;
-    l->end = end->before;
+
+    if(l->size == 1){
+      l->start = NULL;
+      l->end = NULL;
+    }else{
+      l->end = end->before;
+      l->end->next = NULL;
+    }
+
     free(end);
 
     l->size--;
