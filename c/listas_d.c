@@ -194,3 +194,43 @@ int remove(int index, struct list *l){
 
   return -1;
 }
+
+int removeFirst(struct list *l){
+  if(l == NULL || l->start == NULL) return -1;
+
+  struct node *start = l->start;
+
+  if(start->next == NULL){
+    l->start = NULL;
+    l->end = NULL;
+  }else{
+    l->start = start->next;
+    l->start->before = NULL;
+  }
+
+  free(start);
+
+  l->size--;
+
+  return 1;
+}
+
+int removeLast(struct list *l){
+  if(l == NULL || l->start == NULL) return -1;
+
+  struct node *end = l->end;
+
+  if(end->before == NULL){
+    l->start = NULL;
+    l->end = NULL;
+  }else{
+    l->end = end->before;
+    l->end->next = NULL;
+  }
+
+  free(end);
+
+  l->size--;
+
+  return 1;
+}
