@@ -28,6 +28,11 @@ int removeLast(struct list *l);
 int removeFirst(struct list *l);
 int remove(int index, struct list *l);
 
+int clear(struct list *l);
+int clearWithRemove(struct list *l);
+
+int reverse(struct list *l);
+
 int main(){}
 
 int insert(int value, struct list *l){
@@ -231,6 +236,20 @@ int removeLast(struct list *l){
   free(end);
 
   l->size--;
+
+  return 1;
+}
+
+int clearWithRemove(struct list *l){
+  int len;
+
+  if(l == NULL || l->start == NULL) return 1;
+
+  len = l->size;
+
+  for(int i = 0; i < len; i++){
+    remove(0, l);
+  }
 
   return 1;
 }
